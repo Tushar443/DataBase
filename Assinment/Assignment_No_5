@@ -1,0 +1,16 @@
+1)	select * from ORDERS where amt>1000;
+
+2)	select sname,city from SALESPEOPLE where city ="london" and comm>.10;
+
+3)	select * from CUSTOMER where rating >100 or city="rome"; 
+
+4)	select * from Orders where (amt < 1000 or not (odate ='1990-10-03' and cnum > 2003));
+
+ANS==> it will show all data that Amount is less than 1000 and it will not show the data that date is '1990-10-03' and cnum is   	greater than 2003.
+
+5)	select * from ORDERS where not ((odate='1990-10-03' or snum>1006) and amt>=1500);
+
+ANS==> it will show data where odate is '1990-10-03' or snum is greater than 1006 if this is true then it will check amount >=1500. 
+
+
+6)

@@ -1,0 +1,23 @@
+create table SEMP(
+	EMPNO char(4) NOT NULL PRIMARY KEY,
+	EMPNAME char (4),
+	BASIC float (9,2),
+	DEPTNO char (2),
+	DEPTHEAD char (4)
+);
+
+
+create table SDEPT(
+	DEPTNO char(2) NOT NULL PRIMARY KEY,
+	DEPTNAME char(15),	
+);
+
+
+insert into SDEPT values (10,'Development');
+insert into SDEPT values (20,'Training');
+
+insert into SEMP (EMPNO,EMPNAME,BASIC,DEPTNO) values (0001,'SUNI',6000,10);
+insert into SEMP values (0002,'HIRE',8000,20,null);
+insert into SEMP values (0003,'Tush',10,0001,null);
+insert into SEMP values (0004,'Kish',6000,0002,null);
+
