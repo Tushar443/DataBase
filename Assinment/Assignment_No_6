@@ -1,0 +1,16 @@
+1) select * from ORDERS where odate='1990-10-03' or odate='1990-10-04';
+   select * from ORDERS where odate in('1990-10-03','1990-10-04');
+   select * from ORDERS where odate between '1990-10-03' and '1990-10-04';
+
+2) select * from CUSTOMER where snum IN(select snum from SALESPEOPLE where sname='peel' or sname='motika');
+
+3) select * from CUSTOMER where cname like 'A%' or cname like 'G%';
+
+4) select * from CUSTOMER where cname like 'c%'; 
+
+5) select * from ORDERS where not(Amt=0 and Amt=null);
+   select * from ORDERS where Amt!=0 or Amt!=null;
+
+
+
+
