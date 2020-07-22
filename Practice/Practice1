@@ -1,6 +1,6 @@
 create table SEMP(
 	EMPNO char(4) NOT NULL PRIMARY KEY,
-	EMPNAME char (4),
+	EMPNAME char (20),
 	BASIC float (9,2),
 	DEPTNO char (2),
 	DEPTHEAD char (4)
@@ -16,8 +16,99 @@ create table SDEPT(
 insert into SDEPT values (10,'Development');
 insert into SDEPT values (20,'Training');
 
-insert into SEMP (EMPNO,EMPNAME,BASIC,DEPTNO) values (0001,'SUNI',6000,10);
+insert into SEMP values (0001,'SUNI',6000,10,null);
 insert into SEMP values (0002,'HIRE',8000,20,null);
-insert into SEMP values (0003,'Tush',10,0001,null);
-insert into SEMP values (0004,'Kish',6000,0002,null);
+insert into SEMP values (0003,'ALI',10,0001,null);
+insert into SEMP values (0004,'GEORGE',6000,0002,null);
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+create table S(
+	`S#` char(2),
+	Sname varchar(10),
+	Status int(2),
+	City varchar(10)
+);
+
+insert into S values ('S1','Tushar',10,'Mumbai');
+insert into S values ('S2','Sushant',20,'Kurla');
+insert into S values ('S3','Siddhesh',20,'Satara');
+insert into S values ('S4','Shwetalana',30,'Sangli');
+insert into S values ('S5','Subham',10,'Dehradun');
+
+
+create table P (
+	`P#` char (2),
+	Pname varchar (10),
+	Color varchar(5),
+	Weight int (3),
+	City varchar(10)
+);
+
+insert into P values ('P1','Thunder','Red',65,'Mumbai');
+insert into P values ('P2','Sneha','Blue',34,'Goa');
+insert into P values ('P3','shwtank','Oran',45,'UP');
+insert into P values ('P4','Suraj','Yell',56,'Satara');
+insert into P values ('P5','Kishor','Gre',50,'Igatpuri');
+
+
+create table J(
+	`J#` char (2),
+	Jname varchar(10),
+	City varchar(10)
+);
+
+insert into J values ('J1','Rahul','Thane');
+insert into J values ('J2','Prashant','Kholapur');
+insert into J values ('J3','Sachin','Sangli');
+insert into J values ('J4','Satish','UP');
+
+create table SPJ(
+	`S#` char(2),
+	`P#` char (2),
+	`J#` char (2),
+	Qty int (3)
+);
+
+insert into SPJ values ('S1','P1','J3',89);
+insert into SPJ values ('S4','P3','J4',67);
+insert into SPJ values ('S3','P2','J2',45);
+insert into SPJ values ('S5','P5','J1',20);
+
+
+
+
+5) select * from S;
+
+6) select `S#`,Sname from S;
+
+7) select Pname, color from P where city='mumbai';
+
+8) select * from S where city ='Dehradun';
+
+9) select * from S where city ='Mumbai' or city ='dehradun';
+
+10) select * from J where city ='up';
+
+11) select pname,weight from P where weight between 34 and 56 order by weight;
+
+12) select * from S where status >=20;
+
+13) select * from S where city !='kurla';
+
+14) select city from S where `S#` in(select `S#` from SPJ);
+
+15) select weight*1000 as MILIGRAMS,weight*0.001 as KILOGRAMS from P; 
+
+
+
+
+
+
+
+
+
+
+
 

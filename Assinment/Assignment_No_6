@@ -4,7 +4,7 @@
 
 2) select * from CUSTOMER where snum IN(select snum from SALESPEOPLE where sname='peel' or sname='motika');
 
-3) select * from CUSTOMER where cname like 'A%' or cname like 'G%';
+3) select * from CUSTOMER where cname>='A' and cname<='G';
 
 4) select * from CUSTOMER where cname like 'c%'; 
 

@@ -1,0 +1,62 @@
+create table emp(
+	ename varchar(2),
+    sal int, 
+    comm int
+    );
+    
+insert into emp values ('A',5000,500),
+('B',6000,null),
+('C',null,700);
+
+select * from emp;
+
+select * from emp where comm=null;
+
+select * from emp where comm is null;
+
+select * from emp where comm is not null;
+
+select sal + comm from emp;
+
+select sal + ifnull(comm,0) from emp;
+
+select ifnull(sal,0) + ifnull(comm,0) from emp;
+
+
+create table emp2(
+	sal int,
+	deptno int
+);
+
+insert into emp2 values(1000,10),
+(2000,10),
+(3000,20),
+(4000,30),
+(5000,40);
+
+select * from emp2;
+
+select greatest(sal,3000) from emp2;
+
+select least(sal,3000) from emp2;
+
+
+-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+-- CASE Statement/expression
+
+select case when deptno =10 then 'training'
+			when deptno =20 then 'exports'
+            when deptno =30 then 'sales'
+            else 'others'
+            end
+            from emp2;
+
+select case when deptno =10 then 'training'
+			when deptno =20 then 'exports'
+            when deptno =30 then 'sales'
+            end deptname
+            from emp2;
+            
+            
+
+            

@@ -1,0 +1,96 @@
+show tables;
+drop table example;
+create table EMP2 (
+	fname varchar(10),
+    lname varchar(10)
+);
+
+insert into EMP2 value('Arun','Purun'),
+('Turu','Arun'),
+('Sirun','Kirun'),
+('Nutal','Purun');
+
+select * from EMP2;
+
+select concat(fname,lname) from EMP2;
+select concat(fname,' ',lname) from EMP2;
+select concat(concat(fname,' '),lname) from EMP2;
+
+select concat(upper(fname),' ',upper(lname)) from EMP2;
+select lower(fname) from EMP2;
+select lpad(fname),lpad(lname) from EMP2; -- error
+
+
+-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 
+drop table EMP;
+create table EMP (
+	ENAME varchar(20)
+);
+select * from EMP;
+
+insert into EMP value('Arun Purun'),
+('Turu Arun'),
+('Sirun Kirun'),
+('Nutal Purun');
+
+select lpad(ename,25,'*') from EMP;
+
+select rpad(ENAME,25,'*') from EMP;
+
+select substr(ename,3) from EMP;
+
+select substr(ename,3,2) from EMP;
+
+select substr(ename,-3,2) from EMP;
+
+select replace(ename,'un','xy') from EMP;
+
+select replace(ename,'un','xyz') from EMP;
+
+select replace(ename,'un','x') from EMP;
+
+select instr(ename,'r') from EMP;
+
+-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+create table EMP3(
+	ename varchar(20)
+);
+
+insert into EMP3 values ('Arun'),
+('Bannerjee'),
+('Charlie');
+
+select * from EMP3;
+
+select length(ename) from EMP3;
+
+select ascii(ename) from EMP3;
+
+select ascii('z') from EMP3;
+
+select ascii('z') from dual;
+
+select upper('Tushar') from dual;
+
+select substr('New Mumbai',2,4) from dual;
+
+select 3*12 from dual;
+
+select 'Welcome to CDAC' from dual;
+
+select char(65 using utf8) from dual;
+
+select * from EMP3 where ename ='Aruun'; -- no rows selected 
+
+select * from EMP3 where soundex(ename) =soundex('Aruun');
+
+ 
+
+
+
+
+
+
+
+

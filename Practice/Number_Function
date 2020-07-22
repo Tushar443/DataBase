@@ -1,0 +1,60 @@
+
+create table emp(
+	SAL FLOAT
+);
+
+INSERT INTO emp VALUES(1234.567),
+(1852.019),
+(1375.618),
+(1749.156);
+INSERT INTO emp VALUES(6789.000);
+
+SELECT * FROM emp;
+
+DROP TABLES emp;
+
+SELECT round(SAL) FROM emp;
+
+SELECT round(SAL,2) FROM emp;
+
+SELECT round(SAL,1) FROM emp;
+
+SELECT round(SAL,-2) FROM emp;
+
+SELECT truncate(sal,2) FROM emp;
+
+SELECT truncate(sal,-2) FROM emp;
+
+SELECT ceil(sal) FROM emp;
+
+select floor(sal) from emp;
+
+select sign(-2) from dual;
+
+select sign(59);
+
+select sign(0);
+
+select mod(9,5) as ramainder from dual;
+
+select mod(8.22,2.2) as ramainder from dual;
+
+select sqrt(81) from dual;
+
+select power(10,3);
+
+select round(power(1000,1/3));
+
+select abs(-34);
+
+select ln(10);
+
+select log(10,2);
+
+
+
+
+
+
+
+

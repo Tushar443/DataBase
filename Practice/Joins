@@ -1,0 +1,12 @@
+create table dept (
+	deptno int ,
+    dname varchar(10),
+    loc varchar (3)
+);
+
+insert into dept values(1,'TRN','Bby'),
+(2,'EXP','Dlh'),
+(3,'MKTG','Cal');
+
+select emp.deptno,emp.ename,emp.sal,dept.dname,dept.loc from emp,dept 
+where dept.deptno=emp.deptno;

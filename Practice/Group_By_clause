@@ -1,0 +1,36 @@
+select * from emp; 
+
+select deptno,sum(sal) from emp group by deptno;
+
+select deptno,sum(sal) from emp;#  error
+
+select sum(sal) from emp group by deptno;
+
+select deptno,max(sal) from emp group by deptno;
+
+select deptno,min(sal) from emp group by deptno;
+
+select deptno,sum(sal) from emp where sal>7000 group by deptno;
+
+select deptno,sum(sal) from emp  group by deptno where sal>7000; # error
+
+select deptno ,job,sum(sal) from emp group by deptno ,job;
+
+select * from semp; 
+
+select deptno ,job, sum(sal) from semp group by deptno,job;
+
+select deptno ,job, sum(sal) from semp group by job,deptno;
+
+select deptno ,sum(sal) from emp group by deptno,job;
+
+select deptno,sum(sal) from emp group by deptno having sum(sal)>17000;
+
+select deptno ,sum(sal) from emp group by deptno order by 2;
+
+select max(sum_sal) from (select sum(sal) sum_sal from emp group by deptno) as tempp;
+
+
+
+
+

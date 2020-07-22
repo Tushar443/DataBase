@@ -1,0 +1,16 @@
+show tables;
+create table example(
+	NAME varchar
+);
+
+desc example;
+
+drop table example;
+
+select * from example;
+
+create table example(
+	NAME varchar(0)
+);
+
+insert into example values ('a');
