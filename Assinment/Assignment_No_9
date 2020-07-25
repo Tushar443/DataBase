@@ -1,0 +1,20 @@
+select * from ORDERS;
+SELECT * FROM CUSTOMER;
+SELECT *  FROM SALESPEOPLE;
+
+select Onum,cname from CUSTOMER,ORDERS where CUSTOMER.Cnum=ORDERS.Cnum;
+
+select Onum,Sname,cname from CUSTOMER,ORDERS,SALESPEOPLE 
+where SALESPEOPLE.Snum=ORDERS.Snum
+and CUSTOMER.Snum=ORDERS.Snum;
+
+
+select Cname,Sname,comm from CUSTOMER,SALESPEOPLE 
+where SALESPEOPLE.Snum=CUSTOMER.Snum
+having comm>0.12;
+
+select Amt*comm from ORDERS,SALESPEOPLE 
+where SALESPEOPLE.Snum=ORDERS.Snum;
+
+select Amt,Snum from ORDERS where Snum in(
+select Snum from CUSTOMER where rating >100);

@@ -1,0 +1,100 @@
+select * from emp;
+select * from depthead;
+select * from dept;
+
+create table depthead(
+	deptno int,
+    dhead varchar(10)
+);
+
+insert into depthead values(1,'Arun'),
+(2,'Jack');
+
+select dname,ename,dhead from emp,dept,depthead
+where depthead.deptno=dept.deptno
+and dept.deptno=emp.deptno;
+
+create table project(
+	projno char (2),
+    projname varchar(10),
+    custname varchar(10)
+);
+
+drop table project_Emp; 
+
+insert into project values 
+('p1','CGS','Deloitte'),
+('p2','PPS','ICICI Bank'),
+('p3','AMS','MS'),
+('p4','Web Dev','AMF'),
+('p5','Macros','BNP pari');
+
+create table project_Emp(
+	projno char(2) ,
+    empno int
+);
+
+insert into project_Emp values
+('p1',1),
+('p1',2),
+('p1',4),
+('p2',2),('p2',5),
+('p2',1),
+('p3',4),('p3',5),
+('p3',2),
+('p3',3);
+
+select * from project_Emp;
+
+
+select projname,custname,ename from emp,project,project_Emp
+where project.projno=project_Emp.projno
+and emp.empno=project_Emp.empno;
+
+
+select projname,project.projno,custname,ename,emp.sal,emp.deptno,emp.job,emp.mgr from emp,project,project_Emp
+where project.projno=project_Emp.projno
+and emp.empno=project_Emp.empno;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+create table dttabel(
+	d1 datetime,
+    d2 time
+);
+
+insert into dttabel values('1990-03-02 23:23:45','234:23:54'),
+('90-03-02 22:23:45','345:20:53'),
+('20-03-02 23:23:45','234:23:54');
+select * from dttabel;
+
+
+
+
+
+
+
+# Alias
+select ename ENAME,
+sal SALARY,
+sal*12 ANNUAL,
+sal*12*0.4 HRA,
+sal*12*0.2 DA,
+sal*12+sal*12*0.4+sal *12*0.2 NET
+ from emp;
+
+select * from emp where ename > 'A' and ename < 'B';

@@ -1,3 +1,5 @@
+select * from dept;
+select * from emp;
 create table dept (
 	deptno int ,
     dname varchar(10),
@@ -10,3 +12,44 @@ insert into dept values(1,'TRN','Bby'),
 
 select emp.deptno,emp.ename,emp.sal,dept.dname,dept.loc from emp,dept 
 where dept.deptno=emp.deptno;
+
+select emp.deptno,emp.ename,emp.sal,dept.dname,dept.loc from dept,emp 
+where dept.deptno=emp.deptno;
+
+select emp.deptno,emp.ename,emp.sal,dept.dname,dept.loc from emp,dept 
+where dept.deptno=emp.deptno order by 1; 
+
+
+select deptno,dname,loc,empno,ename,job,sal from emp,dept where dept.deptno=emp.deptno;# ERROR
+
+select dept.deptno,dname,loc,empno,ename,job,sal from emp,dept where dept.deptno=emp.deptno;
+
+
+SELECT DEPTNO ,sum(SAL) FROM emp group by DEPTNO;
+
+select DNAME,sum(SAL) FROM emp,dept WHERE dept.deptno=emp.deptno group by dname order by 1;
+
+select DNAME,ename FROM emp,dept WHERE dept.deptno!=emp.deptno order by dname; 
+
+select dname,ename from emp right outer join dept on(dept.deptno=emp.deptno);
+
+select dname,ename from emp left outer join dept on(dept.deptno=emp.deptno);
+
+
+
+select dname,ename from emp right outer join dept on(dept.deptno=emp.deptno)
+union
+select dname,ename from emp left outer join dept on(dept.deptno=emp.deptno);
+
+select dname,ename from emp,dept order by dname;
+
+select a.ename,b.ename from emp a,emp b where a.mgr=b.empno;
+
+
+
+
+
+
+
+
+

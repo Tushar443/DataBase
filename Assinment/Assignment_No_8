@@ -1,0 +1,13 @@
+
+
+1)==> select Onum,Snum,Amt*0.12 as commission from ORDERS; 
+
+2)==> select concat('For the city (',city,'), the highest rating is : ',max(rating),'.') from CUSTOMER group by city;
+
+3)==> select Rating,Cname,Cnum from CUSTOMER order by Rating desc;
+
+4)==> select count(*) as DailyCount from ORDERS group by Odate order by DailyCount desc;
+
+
+
+

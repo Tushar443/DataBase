@@ -1,0 +1,15 @@
+
+
+1)==> SELECT COUNT(*) FROM ORDERS WHERE ODATE ='1990-10-03';
+
+2)==> SELECT COUNT(*) FROM CUSTOMER WHERE CITY IS NOT NULL;
+
+3)==> select Cnum,min(Amt) from ORDERS group by Cnum;
+
+4)==> select * FROM CUSTOMER WHERE CNAME LIKE 'G%';
+
+5)==> SELECT city,max(RATING) as Rating FROM CUSTOMER group by city;
+
+
+
+
