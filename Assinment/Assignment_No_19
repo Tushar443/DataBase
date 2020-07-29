@@ -1,0 +1,7 @@
+1)==> create view v3 AS  SELECT * FROM CUSTOMER WHERE rating 	   =(SELECT MAX(RATING) FROM CUSTOMER);
+
+      > SELECT * FROM Assignments.v3;
+
+2)==> create view v4
+    ->as 
+    ->select city,count(*) from SALESPEOPLE group by city;

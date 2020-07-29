@@ -1,0 +1,9 @@
+
+
+1)==> select sname from SALESPEOPLE where city in(
+(select a.city from SALESPEOPLE a,SALESPEOPLE b
+where a.city=b.city and a.sname !=b.sname));
+
+
+2)==> select a.cname,a.city from CUSTOMER a,CUSTOMER b
+where a.rating=b.rating and a.rating=(select rating from CUSTOMER where cname='Hoffman') group by cname,city; 

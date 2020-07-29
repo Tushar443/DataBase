@@ -1,0 +1,13 @@
+45)     A DBMS needs to maintain a description of all the data items that it contains. Like a RDBMS contains information about all relation, databse objects, views and index present in it.
+The DBMS should also maintains information about views (a definition of the view) to compute the tuples that belong in the view whenever the view is queried or called.
+The multiple relations which stores information about data in database. Such tuples are created and maintained by the system itself. They are called as Catalog relations.
+The catalog relations are also called the system catalog or the data dictionary.
+The system catalog is sometimes also referred to as metadata (data about data).
+The information in the system catalog is generally used only for query optimization.
+It is better known as metadata.
+
+
+
+
+46)   A query optimizer is a critical database management system (DBMS) component that analyzes Structured Query Language (SQL) queries and determines efficient execution mechanisms. A query optimizer generates one or more query plans for each query, each of which may be a mechanism used to run a query
+SQL queries may be simple or complex statements. Each SQL statement requires minimal use of valuable resources, such as disk reads and server memory. The query optimizer ensures this, as well as expedited execution of each SQL query. For example, a query optimizer may generate a series of query plans based on resource costs. One query plan may involve reading a table to retrieve a subset of its data, while another may involve using table indexes for quick data reading. These are known as cost-based optimizers.

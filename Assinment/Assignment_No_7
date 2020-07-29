@@ -6,10 +6,10 @@
 
 3)==> select Cnum,min(Amt) from ORDERS group by Cnum;
 
-4)==> select * FROM CUSTOMER WHERE CNAME LIKE 'G%';
+4)==> select * FROM CUSTOMER WHERE CNAME LIKE 'G%' limit 1;
 
 5)==> SELECT city,max(RATING) as Rating FROM CUSTOMER group by city;
 
-
+6)==> select odate,count(distinct snum) from ORDERS group by odate;
 
 

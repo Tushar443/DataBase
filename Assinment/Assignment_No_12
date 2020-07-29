@@ -1,0 +1,21 @@
+
+
+1)==> select * from CUSTOMER where rating >=any
+	  (select rating from CUSTOMER where snum=
+      (select snum from SALESPEOPLE where sname='serres'));
+
+
+2)==> select sname from SALESPEOPLE where city !=all 
+	  (select distinct city from CUSTOMER);
+
+3)==> select * from ORDERS where amt>=all(select amt from ORDERS where cnum in(
+	  select cnum from CUSTOMER where city ='london'));
+
+4)==> select * from ORDERS where amt>=(select max(amt) from ORDERS where cnum in(
+	  select cnum from CUSTOMER where city ='london'));
+
+
+
+
+
+

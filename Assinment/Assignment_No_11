@@ -1,0 +1,25 @@
+
+
+
+1)==> select onum from ORDERS where cnum=
+	  (select cnum from CUSTOMER where cname='Cisneros');
+
+
+2)==> select cname,rating from CUSTOMER where cnum in(
+	  select cnum from ORDERS group by Cnum having count(*)>1);
+
+3)==> select snum,sum(amt) sum_amt from ORDERS group by snum having sum_amt>(select max(amt) from ORDERS);
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,53 @@
+
+
+1)==> select cname,city,rating,'High Rating' from CUSTOMER where rating>=200
+	  union
+	  select cname,city,rating,'Low Rating' from CUSTOMER where rating<200;
+
+2)==> select sname,snum from SALESPEOPLE union
+	  select cname,cnum from CUSTOMER where cnum in(select cnum from ORDERS 
+      group by cnum having count(*)>1) order by sname;
+
+3)==> select onum from ORDERS where odate='1990-10-03' union all
+	  select cnum from CUSTOMER where city ='san jose' union all
+	  select snum from SALESPEOPLE where city='san jose';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# select onum from ORDERS where odate='1990-10-03' and ORDERS.Cnum!=(
+# 	  select cnum from CUSTOMER where city ='san jose' and CUSTOMER.snum 
+# 	  not in(select snum from SALESPEOPLE where city='san jose'));
+# 
+
+
+
+
+
+
+
+
+
+
+
