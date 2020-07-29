@@ -1,0 +1,18 @@
+
+
+1)==> create table multicast as select * from SALESPEOPLE where 1=2;
+
+		insert into multicast
+		select * from SALESPEOPLE where snum in(
+		select snum from ORDERS group by snum having count(*)>1);
+
+
+2)==> delete from CUSTOMER where cnum not in(
+	  select cnum from ORDERS group by cnum);
+
+3)==> update SALESPEOPLE set comm=comm*0.2
+	  where snum in(select distinct snum from ORDERS 
+	  where amt >3000);
+
+
+

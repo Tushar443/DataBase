@@ -1,7 +1,19 @@
-1)==> create view v3 AS  SELECT * FROM CUSTOMER WHERE rating 	   =(SELECT MAX(RATING) FROM CUSTOMER);
+1)==> ->create view v3 
+	  -> AS  
+      -> SELECT * FROM CUSTOMER WHERE rating =(SELECT MAX(RATING) FROM CUSTOMER);
 
-      > SELECT * FROM Assignments.v3;
+      -> SELECT * FROM Assignments.v3;
 
-2)==> create view v4
-    ->as 
-    ->select city,count(*) from SALESPEOPLE group by city;
+2)==> ->create view v4
+      ->as 
+      ->select city,count(*) from SALESPEOPLE group by city;
+
+3)==>   create view v5
+	as
+	select sname,avg(amt),count(*) from ORDERS,SALESPEOPLE 
+	where ORDERS.snum=SALESPEOPLE.snum group by sname order by sname;
+
+
+4)==>   create view v6
+	as
+	select count(cname),snum from CUSTOMER group by snum having count(cname)>1;  

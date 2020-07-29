@@ -1,6 +1,3 @@
-select * from ORDERS;
-select * from CUSTOMER;
-select * from SALESPEOPLE;
 
 1)==> insert into SALESPEOPLE (city,sname,comm,snum) values('San Jose','Blanco',null,1100);
 
@@ -8,9 +5,10 @@ select * from SALESPEOPLE;
 	  select cnum from CUSTOMER where cname='clemens');
       
  
-update CUSTOMER set rating =temp+100 where city='rome' ;
+3)==> update CUSTOMER set rating =rating+100 where city='rome';
 
 
-update CUSTOMER set snum=(select snum from SALESPEOPLE where sname='motika') where cnum in( 
-select cnum from CUSTOMER where snum=(
-select snum from SALESPEOPLE where sname='serres'));
+4)==> update CUSTOMER set snum=(select snum from SALESPEOPLE where sname='motika')
+	  where snum=(select snum from SALESPEOPLE where sname='serres');
+
+

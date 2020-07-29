@@ -1,0 +1,148 @@
+create table temp (
+	fir int(4),
+    sec char(15)
+);
+
+delimiter //
+create procedure abc()
+begin
+		insert into temp values (1,'Hello');
+end; //
+delimiter ;
+
+call abc();
+
+select * from temp;
+
+# @@@@@@@@@@@
+
+delimiter //
+create procedure abc1()
+begin
+		declare x int(4);
+        set x=10;
+		insert into temp values(x,'Hello');
+		# insert into temp values (1,'Hello');
+end; //
+delimiter ;
+
+
+call abc1();
+
+select * from temp;
+
+# @@@@@@@@@
+
+delimiter //
+create procedure abc2()
+begin
+		declare x int(4) default 20;
+		insert into temp values (x,'Hello');
+end; //
+delimiter ;
+
+call abc2();
+
+select * from temp;
+
+#@@@@@@@@@@@@@@
+
+delimiter //
+create procedure abc3()
+begin
+		declare x char(15) default 'World';
+		insert into temp values (30,x);
+end; //
+delimiter ;
+
+call abc3();
+
+select * from temp;
+
+#@@@@@@@@@@@@@@
+
+delimiter //
+create procedure abc4()
+begin
+		declare x char (15) default 'KING';
+        declare y float (7,2) default 3000;
+        declare z float (2,1) default 0.4;
+        declare hra float (7,2);
+        set hra=y*z;
+        insert into temp values (y,x);
+		insert into temp values (hra,'HRA');
+end; //
+delimiter ;
+
+call abc4();
+
+select * from temp;
+
+#@@@@@@@@@@@@@@@@@
+
+delimiter //
+create procedure abc5(x char(15),y float(7,2),z float(2,1))
+begin
+		declare hra float (7,2);
+        set hra=y*z;
+        insert into temp values(y,x);
+		insert into temp values (hra,'HRA');
+end; //
+delimiter ;
+
+call abc5('Tushar',80000,0.4);
+call abc5 ('Kishoreee',8,0.3);
+# drop table temp;
+select * from temp;
+
+#@@@@@@@@@@@@@@@@@@@@@@
+
+
+select * from CUSTOMER;
+delimiter //
+create procedure abc6()
+begin
+		declare x int(4);
+        select rating into x from CUSTOMER where cname='hoffman';
+        /*  
+        processing e.g set hra=x*0.4 ,etc */
+		insert into temp values (x,'Hoffman');
+end; //
+delimiter ;
+
+call abc6();
+
+select * from temp;
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+delimiter //
+create procedure abc7()
+begin
+		declare x int(4);
+        declare y char(15);
+        select snum,cname into x,y from CUSTOMER where cname='liu';
+		insert into temp values (x,y);
+end; //
+delimiter ;
+
+drop procedure abc7;
+call abc7();
+
+select * from temp;
+
+
+#@@@@@@@@@@@@@@@@@@@@@@
+
+show procedure status;
+
+show procedure status where name like 'A%';
+
+show create procedure abc4;
+
+
+
+
+
+
+
