@@ -1,0 +1,114 @@
+create table emp(
+	ename varchar(15),
+	sal float
+);
+
+insert into emp values('KING',5000);
+
+select * from emp;
+drop table temp;
+drop procedure abc;
+
+create table temp(
+	sec int(4), 
+    fir varchar(15)
+);
+
+delimiter //
+create procedure abc()
+begin
+	declare x int(4);
+    select sal into x from emp where ename='KING';
+    if x>4000 then 
+		insert into temp values (x,'HIGH SAL');
+	end if;
+end; //
+delimiter ;
+
+
+call abc();
+
+select * from temp;
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+drop procedure abc2;
+delimiter //
+create procedure abc2()
+begin
+	declare x int(4);
+    select sal into x from emp where ename='KING';
+    if x>6000 then 
+		insert into temp values (x,'HIGH SAL');
+	else 
+		insert into temp values(x,'LOW SAL');
+	end if;
+end; //
+delimiter ;
+
+
+call abc2();
+
+select * from temp;
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@alter
+
+
+delimiter //
+create procedure abc3()
+begin
+	declare x int(4);
+    select sal into x from emp where ename='KING';
+    if x>4000 then 
+		insert into temp values (x,'HIGH SAL');
+	elseif x<4000 then
+		insert into temp values (x,'LOW SAL');
+	else
+		insert into temp values (x,'medium SAL');
+	end if;
+end; //
+delimiter ;
+
+
+call abc3();
+
+select * from temp;
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2
+
+
+delimiter //
+create procedure abc4()
+begin
+	declare x boolean default true;
+    if x then 
+		insert into temp values (10,'Tushar');
+    end if;
+end; //
+delimiter ;
+
+
+call abc4();
+
+select * from temp;
+
+
+#@@@@@@@@@@@@@@@@@@@@@@@@2
+
+delimiter //
+create procedure abc5()
+begin
+	declare x boolean default false;
+    if not x then 
+		insert into temp values (10,'Thunder');
+    end if;
+end; //
+delimiter ;
+
+
+call abc5();
+
+select * from temp;
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+

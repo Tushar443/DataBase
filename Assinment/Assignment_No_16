@@ -1,3 +1,21 @@
 select * from ORDERS;
 select * from CUSTOMER;
 select * from SALESPEOPLE;
+
+
+1)==> create index Orders_Odate on ORDERS(odate);
+
+	  select odate from ORDERS group by odate;
+      
+      
+2)==> ALTER TABLE ORDERS ADD CONSTRAINT u_c_order unique (Onum);
+      
+
+3)==> CREATE INDEX i_index_date ON orders(odate);    
+
+4)==> ALTER TABLE CUSTOMERS ADD  PRIMARY KEY(Rating);
+
+      
+      
+	
+      

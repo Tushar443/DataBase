@@ -1,0 +1,135 @@
+create table temp (
+	fir int(4),
+    sec varchar(15)
+);
+delimiter //
+create procedure abc()
+begin
+		declare x int(4) default 1;
+        while x<10 do
+			insert into temp values(x,'in while loop');
+            set x=x+1;
+		end while;
+end; //
+delimiter ;
+
+
+call abc();
+
+select * from temp;
+
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+delete from temp;
+drop procedure abc2;
+delimiter //
+create procedure abc2()
+begin
+		declare x int(4) default 1;
+        declare y int(4) default 1;
+        while x<10 do
+				while y<10 do
+					insert into temp values(y,'inner y-loop');
+					set y=y+1;
+				end while;
+            insert into temp values(x,'outer x-loop');
+            set x=x+1;
+		end while;
+end; //
+delimiter ;
+
+
+call abc2();
+
+select * from temp;
+
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2
+delete from temp;
+drop procedure abc3;
+delimiter //
+create procedure abc3()
+begin
+		declare x int(4) default 1;
+        declare y int(4) default 1;
+        while x<10 do
+				set y=1;
+				while y<10 do
+					insert into temp values(y,'inner y-loop');
+					set y=y+1;
+				end while;
+            insert into temp values(x,'outer x-loop');
+            set x=x+1;
+		end while;
+end; //
+delimiter ;
+
+
+call abc3();
+
+select * from temp;
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2
+
+#Repeat Loop
+delete from temp;
+drop procedure abc4;
+delimiter //
+create procedure abc4()
+begin
+		declare x int(4) default 1;
+        repeat 
+			insert into temp values(x,'repeat loop');
+            set x=x+1;
+		until x>5
+        end repeat;
+end; //
+delimiter ;
+
+
+call abc4();
+
+select * from temp;
+
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+drop table temp;
+delimiter //
+create procedure abc5()
+begin
+		declare x int(4) default 1;
+		pqr_loop : loop 
+					if x>10 then 
+						leave pqr_loop;
+					end if;
+                    set x=x+1;
+                    if mod(x,2) !=0 then 
+						iterate pqr_loop;
+					else
+						insert into temp values(x,'inside loop');
+					end if;
+				end loop;
+end; //
+delimiter ;
+
+
+call abc5();
+
+select * from temp;
+
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2
+
+# Seesion Variables
+
+set @x=12344566772345456554342324353536346532233456789876543456787654328765432345676543;
+select @x from dual;
+
+
+set @y ='Tushar';
+select @y  from dual;
+
+
+set @y ='1990-02-03 00:23:45';
+select @y  from dual;

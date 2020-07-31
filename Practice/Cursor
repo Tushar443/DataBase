@@ -1,0 +1,68 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# select * from CUSTOMER;
+# select * from ORDERS;
+# 
+# select cname,onum,sname from CUSTOMER,ORDERS,SALESPEOPLE
+# where SALESPEOPLE.Snum=ORDERS.Snum
+# and ORDERS.snum=CUSTOMER.Snum; 
+# ;
+# 
+# 
+# select odate,count(*) from ORDERS group by odate; 
+# 
+# 
+# select * from emp;
+# insert into emp values('Subham',null);
+# 
+# select count(*) from emp;
+# 
+# select sysdate() from dual;
+# 
+# select substr('Tushar',-3,2) from dual;
+
+select * from CUSTOMER;
+
+select * from CUSTOMER where cname>'c' and cname<'h';
+
+
+select * from CUSTOMER where substr(cname,1,1)  not in('a%a','e%e','i%i','o%o','u%u');
+
+
+
+select * from CUSTOMER where substr(cname,1,1) not in('a','e','i','o','u') and
+substr(cname,-1,1) not in('a','e','i','o','u');
+
+
+
+
+select substr(cname,-1,1) from CUSTOMER;
+
+
+
+
+
+
+
+
+
+
+
+
