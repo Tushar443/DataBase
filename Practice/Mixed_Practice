@@ -1,0 +1,75 @@
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+select * from emp where substr(ename,1,1) like 'k';
+
+select * from CUSTOMER;
+select * from ORDERS;
+
+select cname,onum,sname from CUSTOMER,ORDERS,SALESPEOPLE
+where SALESPEOPLE.Snum=ORDERS.Snum
+and ORDERS.snum=CUSTOMER.Snum; 
+;
+
+
+select odate,count(*) from ORDERS group by odate; 
+
+
+select * from emp;
+insert into emp values('Subham',null);
+
+select count(*) from emp;
+
+select sysdate() from dual;
+
+select substr('Tushar',-3,2) from dual;
+
+select * from CUSTOMER;
+
+select * from CUSTOMER where cname>'c' and cname<'h';
+
+
+select * from CUSTOMER where substr(cname,1,1)  not in('a%a','e%e','i%i','o%o','u%u');
+
+
+
+select * from CUSTOMER where substr(cname,1,1) not in('a','e','i','o','u') and
+substr(cname,-1,1) not in('a','e','i','o','u');
+
+
+
+
+select substr(cname,-1,1) from CUSTOMER;
+
+
+create table dept(
+	deptno int(2) auto_increment primary key,
+    dname varchar(10)
+);
+
+
+create table emp2(
+	empno int(4) auto_increment primary key,
+    ename varchar(25) not null check (ename=upper(ename)),
+    sal float(7,2) default 7000
+    check (sal between 5000 and 99000),
+    deptno int(2),
+    status char(1) default 'T'
+    check (status in('t','p','r')),
+    comm float not null,
+    ppno char (15),
+    check(sal+comm<18000)
+);
+
+desc emp2;
+alter table emp2 drop primary key;
+
+alter table emp2 add foreign key (deptno) references dept(deptno);
+
+alter table emp2 drop foreign key deptno;
+
+
+
+
+
+
+

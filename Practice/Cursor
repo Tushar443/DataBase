@@ -1,68 +1,186 @@
+create table emp4(
+	empno int(4),
+    ename varchar(15),
+    sal int(4),
+    deptno int(2)
+);
+
+insert into emp4 values (1,'A',5000,1),
+(2,'B',6000,1),
+(3,'C',7000,1),
+(4,'D',9000,2),
+(5,'E',8000,2);
 
 
 
 
+drop table temp;
+
+create table temp1(
+	fir  int(4),
+    sec varchar(15)
+);
+
+drop procedure abc;
+
+delimiter //
+create procedure abc()
+begin
+	declare a int(4);
+    declare b varchar(15);
+    declare c int(4);
+    declare d int(2);
+    declare x int (4) default 1;
+    declare c1 cursor for select * from emp4;
+    open c1;
+			while x<6 do
+            fetch c1 into a,b,c,d;
+            insert into temp1 values(a,b);
+            set x=x+1;
+		end while;
+    close c1;
+end; //
+delimiter ;
 
 
+call abc();
+
+select * from temp1;
 
 
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2
+drop procedure abc2;
+delete from temp1;
+
+delimiter //
+create procedure abc2()
+begin
+	declare a int(4);
+    declare b varchar(15);
+    declare c int(4);
+    declare d int(2);
+	declare flag int(1) default 1;
+    declare c2 cursor for select ename,sal from emp4;
+    declare continue handler for not found set flag=0;
+    open c2;
+    c2_loop : loop
+			 fetch c2 into b,c;
+			if flag=0 then
+				leave c2_loop; 
+            end if;
+           
+            insert into temp1 values (c,b);
+	end loop c2_loop;
+    close c2;
+end; //
+delimiter ;
 
 
+call abc2();
+
+select * from temp1;
+
+delete from temp1;
 
 
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 
+delimiter //
+create procedure abc3()
+begin
+		declare l int(4) default 8;
+        declare w int(4) default 3;
+        declare perimeter int(4);
+        declare area int(4);
+        set perimeter =2*(l+w);
+        set area =l*w;
+        insert into temp1 values(perimeter,'Perimeter');
+        insert into temp1 values(area,'Area');
+end; //
+delimiter ;
+
+call abc3();
+select * from temp1;
+
+delete from temp1;
+desc temp1;
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 
+delimiter //
+create procedure abc4(x int(4))
+begin 
+		declare cube_x int(4);
+        declare square_x int(4);
+        set cube_x=x*x*x;
+        set square_x=x*x;
+        insert into temp1 values (cube_x,'Cube');
+        insert into temp1 values (square_x,'Square');
+end; //
+delimiter ;
+
+call abc4(4);
+
+select * from temp1;
+delete from temp1;
 
 
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@alter
 
-# select * from CUSTOMER;
-# select * from ORDERS;
+
+drop procedure abc5;
+delimiter //
+create procedure abc5( out x int(4))
+begin 
+		declare cube_x int(4);
+        declare square_x int(4);
+        set cube_x=x*x*x;  # operation perform on out variable not allowed;
+        set square_x=x*x;
+        insert into temp1 values (cube_x,'Cube');
+        insert into temp1 values (square_x,'Square');
+        set x=12;
+end; //
+delimiter ;
+set @x = 10;
+select @x from dual;
+call abc5(@x);
+select @x from dual;
+
+select * from temp1;
+delete from temp1;
+
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@222
+drop procedure abc5;
+delimiter //
+create procedure abc6( inout x int(4))
+begin 
+		declare cube_x int(4);
+        declare square_x int(4);
+        set cube_x=x*x*x;
+        set square_x=x*x;
+        insert into temp1 values (cube_x,'Cube');
+        insert into temp1 values (square_x,'Square');
+        set x=12;
+end; //
+delimiter ;
+set @x = 10;
+select @x from dual;
+call abc6(@x);
+select @x from dual;
+
+select * from temp1;
+delete from temp1;
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
 # 
-# select cname,onum,sname from CUSTOMER,ORDERS,SALESPEOPLE
-# where SALESPEOPLE.Snum=ORDERS.Snum
-# and ORDERS.snum=CUSTOMER.Snum; 
-# ;
-# 
-# 
-# select odate,count(*) from ORDERS group by odate; 
-# 
-# 
-# select * from emp;
-# insert into emp values('Subham',null);
-# 
-# select count(*) from emp;
-# 
-# select sysdate() from dual;
-# 
-# select substr('Tushar',-3,2) from dual;
+# select * from CUSTOMER
+# where substr(cname,1,1) like 'H' and substr(cname,-2,2) like 'AN';
 
-select * from CUSTOMER;
-
-select * from CUSTOMER where cname>'c' and cname<'h';
-
-
-select * from CUSTOMER where substr(cname,1,1)  not in('a%a','e%e','i%i','o%o','u%u');
-
-
-
-select * from CUSTOMER where substr(cname,1,1) not in('a','e','i','o','u') and
-substr(cname,-1,1) not in('a','e','i','o','u');
-
-
-
-
-select substr(cname,-1,1) from CUSTOMER;
-
-
-
-
-
-
-
-
-
+select * from ORDERS where month(Odate)='10'; 
 
 
 
