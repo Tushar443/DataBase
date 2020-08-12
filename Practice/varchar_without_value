@@ -14,3 +14,8 @@ create table example(
 );
 
 insert into example values ('a');
+
+
+
+
+select name from occupations where occupation in(select occupation from OCCUPATIONS group by occupation) order by occupation,name;

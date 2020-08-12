@@ -1,0 +1,83 @@
+create table temp(
+	fir int ,
+    sec varchar(25)
+);
+
+
+
+delimiter //
+create procedure length_perimeter()
+begin
+	declare length int default 8;
+    declare width int default 4;
+    declare Area int;
+    declare Perimeter int;
+    set Area=length* width;
+    set Perimeter =2*(length+width);
+    insert into temp values (Area,'Area');
+    insert into temp values (Perimeter,'Perimeter');
+end ;//
+delimiter ;
+
+call length_perimeter();
+
+select * from temp;
+
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+delimiter //
+create procedure square_cube()
+begin
+	declare num int default 8;
+    declare cube_c int;
+    declare square int;
+    set cube_c=num*num*num;
+    set square=num*num;
+    insert into temp values(cube_c,'Cube');
+    insert into temp values(square,'Square');
+end ;//
+delimiter ;
+drop procedure square_cube;
+call square_cube();
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+delimiter //
+create procedure Divisible(x int)
+begin
+		if x%5=0 then
+			insert into temp values (x,'Divisible by 5');
+		else
+			insert into temp values (x,'not Divisible by 5');
+        end if;
+end; //
+delimiter ;
+
+call Divisible(10);
+call Divisible(11);
+
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+delimiter //
+create procedure product(x int,y int)
+begin
+		if x*y>100 then 
+			insert into temp values (x*y,' is grater than 100');
+		elseif x*y=100 then 
+			insert into temp values (x*y,' is Equal to 100');
+		else 
+			insert into temp values (x*y,' is less than 100');
+		end if;
+end ; //
+delimiter ;
+
+call product(34,45);
+call product (4,6);
+call product(10,10);
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2
+
+
+
+select * from temp;
+delete from temp;

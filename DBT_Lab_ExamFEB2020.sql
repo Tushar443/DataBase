@@ -75,7 +75,7 @@ delimiter //
     declare c_sal int;
     declare c_comm int;
     declare c_deptno int;
-		declare  cursor c1 for emp on select * from emp;
+		declare  c1 cursor for select * from emp;
         declare flag int default 1;
         declare continue handler for not found set flag=0;
          open c1;
@@ -83,10 +83,10 @@ delimiter //
 			fetch c1 into c_empno,c_ename,c_job,c_mgr,c_hiredate,c_sal,c_comm,c_deptno;
 			if flag =0;
 				leave c_loop;
-			end if;
-            if c_sal>1500
+			else
+          
             insert into temp values(c_empno,c_ename,c_job,c_mgr,c_hiredate,c_sal,c_comm,c_deptno);
-            end if;
+          
 		end loop c_loop;
         close c1;
 	   end; //
