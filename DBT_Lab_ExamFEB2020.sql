@@ -81,7 +81,7 @@ delimiter //
          open c1;
         c_loop : loop
 			fetch c1 into c_empno,c_ename,c_job,c_mgr,c_hiredate,c_sal,c_comm,c_deptno;
-			if flag =0;
+			if flag =0 then
 				leave c_loop;
 			else
           
